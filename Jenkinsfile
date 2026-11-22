@@ -12,7 +12,7 @@ pipeline {
 
         stage('Automated Tests') {
             steps {
-                bat 'py -m unittest discover -s tests -v'
+                bat '"C:\\Users\\anand\\AppData\\Local\\Programs\\Python\\Python39\\python.exe" -m unittest discover -s tests -v'
             }
         }
 
