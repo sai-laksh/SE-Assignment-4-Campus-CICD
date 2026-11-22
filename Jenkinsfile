@@ -31,7 +31,7 @@ pipeline {
 
         stage('Smoke Test') {
             steps {
-                bat 'powershell -NoProfile -Command "Invoke-WebRequest http://localhost:8081 -UseBasicParsing"'
+                 bat 'powershell -NoProfile -Command "$ok = $false; for ($i = 0; $i -lt 10; $i++) { try { Invoke-WebRequest http://localhost:8081 -UseBasicParsing -TimeoutSec 3; $ok = $true; break } catch { Start-Sleep -Seconds 2 } }; if (-not $ok) { throw \'Website smoke test failed\' }"'
             }
         }
     }
