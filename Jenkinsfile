@@ -18,14 +18,14 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                bat 'docker build -t campus-welcome:%BUILD_NUMBER% .'
+                bat '"C:\\Users\\anand\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe" build -t campus-welcome:%BUILD_NUMBER% .
             }
         }
 
         stage('Deploy Website') {
             steps {
-                bat 'docker rm -f campus-welcome || exit /b 0'
-                bat 'docker run -d --name campus-welcome -p 8081:80 campus-welcome:%BUILD_NUMBER%'
+                bat '"C:\\Users\\anand\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe" rm -f campus-welcome || exit /b 0'
+                bat '"C:\\Users\\anand\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe" run -d --name campus-welcome -p 8081:80 campus-welcome:%BUILD_NUMBER%'
             }
         }
 
